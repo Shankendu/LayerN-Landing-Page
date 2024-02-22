@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Preload from "./Preload";
 import { Link } from "react-router-dom";
 
+
 export default function Hero() {
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +29,7 @@ export default function Hero() {
       spinner.add("hidden");
       text.remove("hidden");
     }, 4000);
-    window.location.href = `https://aggregator-kohl.vercel.app/`;
+    window.location.href = "https://aggregator-kohl.vercel.app/"
   }
 
   function btnLoader2(e) {
@@ -50,7 +51,7 @@ export default function Hero() {
       {loading ? (
         <Preload />
       ) : (
-        <section className="bg-gray-950/80 text-white relative ">
+        <section className="bg-gray-950/80 text-white relative">
           <video
             className="absolute h-full w-full object-cover -z-10"
             autoPlay
@@ -74,15 +75,16 @@ export default function Hero() {
           <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex h-screen lg:items-center">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-[5rem] text-transparent sm:text-5xl font-poppins font-black">
-               LayerN
+                LayerN
               </h1>
               <span className="sm:block pt-3 font-outline-2 text-transparent bg-clip-text text-3xl font-poppins font-black sm:text-5xl ">
                 {" "}
                 Powered By Celestia.{" "}
               </span>
-              <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-              DEX Aggregator based on Modular DA providing minimal fees, transaction speed & reduced blob sizes.
-            </p>
+              <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed font-poppins font-medium">
+               DEX Aggregator <span className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-transparent ">based on Modular DA providing minimal fees,
+                transaction speed & reduced blob sizes.</span>
+              </p>
 
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <button
@@ -107,7 +109,10 @@ export default function Hero() {
                     btnLoader2(e);
                   }}
                 >
-                  <span id="btn-text2">Learn More</span>
+                  <div className="flex flex-col">
+                    <span id="btn-text2">Launch zk-client</span>
+                    <span id="btn-text2">(coming soon)</span>
+                  </div>
                   <div id="loader2" className="space-x-1 hidden w-full">
                     <div className="h-2 w-2 rounded-full bg-white animate-scaleUp "></div>
                     <div className="h-2 w-2 rounded-full bg-white animate-scaleUp animate-delay-75"></div>
