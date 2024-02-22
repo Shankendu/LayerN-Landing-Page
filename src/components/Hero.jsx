@@ -4,6 +4,7 @@ import Logo from "../assets/swap.png";
 import { useState, useEffect } from "react";
 import Preload from "./Preload";
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 
 export default function Hero() {
@@ -17,34 +18,36 @@ export default function Hero() {
     }, 4000);
   }, []);
 
-  function btnLoader(e) {
-    e.preventDefault();
-    let spinner = document.getElementById("loader").classList;
-    let text = document.getElementById("btn-text").classList;
-    spinner.add("flex");
-    spinner.remove("hidden");
-    text.add("hidden");
-    setTimeout(() => {
-      spinner.remove("flex");
-      spinner.add("hidden");
-      text.remove("hidden");
-    }, 4000);
-    window.location.href = "https://aggregator-kohl.vercel.app/"
+  function btnLoader() {
+   
+    // let spinner = document.getElementById("loader").classList;
+    // let text = document.getElementById("btn-text").classList;
+    // spinner.add("flex");
+    // spinner.remove("hidden");
+    // text.add("hidden");
+    // setTimeout(() => {
+    //   spinner.remove("flex");
+    //   spinner.add("hidden");
+    //   text.remove("hidden");
+    // }, 4000);
+    // window.location.href = "https://aggregator-kohl.vercel.app/"
+    let mainBtn = document.getElementById('drop').classList
+    mainBtn.toggle('invisible')
   }
 
-  function btnLoader2(e) {
-    e.preventDefault();
-    let spinner = document.getElementById("loader2").classList;
-    let text = document.getElementById("btn-text2").classList;
-    spinner.add("flex");
-    spinner.remove("hidden");
-    text.add("hidden");
-    setTimeout(() => {
-      spinner.remove("flex");
-      spinner.add("hidden");
-      text.remove("hidden");
-    }, 4000);
-  }
+  // function btnLoader2(e) {
+  //   e.preventDefault();
+  //   let spinner = document.getElementById("loader2").classList;
+  //   let text = document.getElementById("btn-text2").classList;
+  //   spinner.add("flex");
+  //   spinner.remove("hidden");
+  //   text.add("hidden");
+  //   setTimeout(() => {
+  //     spinner.remove("flex");
+  //     spinner.add("hidden");
+  //     text.remove("hidden");
+  //   }, 4000);
+  // }
 
   return (
     <>
@@ -88,22 +91,22 @@ export default function Hero() {
 
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <button
-                  className="flex justify-center items-center w-full rounded border border-purple-600 bg-purple-600 px-12 py-3 text-lg text-white hover:bg-transparent hover:text-white focus:outline-none active:text-opacity-75 sm:w-auto hover:transition-all hover:delay-100 font-poppins font-bold hover:duration-200"
+                  className="flex justify-center items-center rounded border border-purple-600 bg-purple-600 px-12 py-3 text-lg text-white hover:bg-transparent hover:text-white focus:outline-none active:text-opacity-75 sm:w-auto hover:transition-all hover:delay-100 font-poppins font-bold hover:duration-200"
                   onClick={(e) => {
                     btnLoader(e);
                   }}
                 >
                   <span id="btn-text" className="">
-                    Launch 0xSwap
+                    Launch Dapp
                   </span>
-                  <div id="loader" className="space-x-1 hidden w-full">
-                    <div className="h-2 w-2 rounded-full bg-white animate-scaleUp "></div>
-                    <div className="h-2 w-2 rounded-full bg-white animate-scaleUp animate-delay-75"></div>
-                    <div className="h-2 w-2 rounded-full bg-white animate-scaleUp animate-delay-150"></div>
+                  <div id="loader" className="space-x-1 hidden w-auto">
+                    <div className="h-2 w-2 rounded-full leading-7 bg-white animate-scaleUp "></div>
+                    <div className="h-2 w-2 rounded-full leading-7 bg-white animate-scaleUp animate-delay-75"></div>
+                    <div className="h-2 w-2 rounded-full leading-7 bg-white animate-scaleUp animate-delay-150"></div>
                   </div>
                 </button>
 
-                <button
+                {/* <button
                   className="block w-full rounded border border-green-200 px-12 py-3 text-lg font-bold font-poppins text-white hover:text-black hover:bg-green-200 focus:outline-none sm:w-auto hover:transition-all hover:delay-100 hover:duration-200"
                   onClick={(e) => {
                     btnLoader2(e);
@@ -118,8 +121,9 @@ export default function Hero() {
                     <div className="h-2 w-2 rounded-full bg-white animate-scaleUp animate-delay-75"></div>
                     <div className="h-2 w-2 rounded-full bg-white animate-scaleUp animate-delay-150"></div>
                   </div>
-                </button>
+                </button> */}
               </div>
+              <Dropdown id="drop" className="mx-auto left-0 invisible transition-all ease-in-out"/>
             </div>
           </div>
         </section>
