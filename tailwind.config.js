@@ -43,7 +43,7 @@ export default {
           },
           "50%": {
             fill:'transparent',
-            stroke:'white',
+            stroke:'gray',
             strokeWidth:'2',
           },
           "80%, 100%": {

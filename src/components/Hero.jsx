@@ -76,8 +76,8 @@ export default function Hero() {
             <li className="text-xl font-poppins font-black">ABOUT</li>
           </ul>
           <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex h-screen lg:items-center">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-[5rem] text-transparent sm:text-5xl font-poppins font-black">
+            <div className="mx-auto h-full max-w-3xl text-center">
+              <h1 className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-2xl text-transparent sm:text-[5rem] font-poppins font-black py-10">
                 LayerN
               </h1>
               <span className="sm:block pt-3 font-outline-2 text-transparent bg-clip-text text-3xl font-poppins font-black sm:text-5xl ">
