@@ -72,7 +72,7 @@ export default function Hero() {
         .to("#preload", {
           yPercent: "-100",
           duration: 1,
-          borderRadius: "50%",
+          borderRadius: "40%",
           backgroundColor: "rgb(147 51 234)",
           ease: "power4.inOut",
         })
@@ -86,6 +86,8 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  let mm = gsap.matchMedia();
+
   function mouseMove(e) {
     let magneto = document.getElementById("btn");
     let magnetoText = document.getElementById("btn-text");
@@ -94,35 +96,43 @@ export default function Hero() {
 
     const newX = (e?.clientX - boundBox?.left) / magneto?.offsetWidth - 0.5;
     const newY = (e?.clientY - boundBox?.top) / magneto?.offsetHeight - 0.5;
+    let mm = gsap.matchMedia();
 
-    gsap.to(magneto, {
-      duration: 1,
-      x: newX ,
-      y: newY,
-      ease: "power4.out",
-    });
+    mm.add("(min-width: 800px)", () => {
+      gsap.to(magneto, {
+        duration: 1,
+        x: newX * 20,
+        y: newY * 20,
+        ease: "power4.out",
+      });
 
-    gsap.to(magnetoText, {
-      duration: 1,
-      x: newX * magnetoTextStrength,
-      y: newY * magnetoTextStrength,
-      ease: "power4.out",
+      gsap.to(magnetoText, {
+        duration: 1,
+        x: newX * magnetoTextStrength,
+        y: newY * magnetoTextStrength,
+        ease: "power4.out",
+      });
     });
   }
   function mouseleave() {
     let magneto = document.getElementById("btn");
     let magnetoText = document.getElementById("btn-text");
-    gsap.to(magneto, {
-      ease: "elastic.out",
-      duration: 1,
-      x: 0,
-      y: 0,
-    });
-    gsap.to(magnetoText, {
-      ease: "elastic.out",
-      duration: 1,
-      x: 0,
-      y: 0,
+
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 800px)", () => {
+      gsap.to(magneto, {
+        ease: "elastic.out",
+        duration: 1,
+        x: 0,
+        y: 0,
+      });
+      gsap.to(magnetoText, {
+        ease: "elastic.out",
+        duration: 1,
+        x: 0,
+        y: 0,
+      });
     });
   }
   return (
@@ -143,21 +153,21 @@ export default function Hero() {
             id="top-items"
             className="absolute flex justify-between items-center top-0 right-0 w-full px-8 py-8 z-10"
           >
-            <li className="text-xl font-poppins font-black">DEX</li>
+            <li className="text-lg sm:text-xl font-poppins font-black">DEX</li>
             <Link to="/">
               <img
-                className="h-12 hover:animate-spin"
+                className="h-8 sm:h-12 hover:animate-spin"
                 src={Logo}
                 alt="swap logo"
               />
             </Link>
-            <li className="text-xl font-poppins font-black">ABOUT</li>
+            <li className="text-lg sm:text-xl  font-poppins font-black">ABOUT</li>
           </ul>
           <div className="mx-auto w-screen px-4 py-32 lg:flex h-screen lg:items-center top-0 right-0 bg-black/80 absolute">
             <div className="mx-auto h-full max-w-3xl text-center">
               <h1
                 id="name"
-                className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-2xl text-transparent sm:text-[5rem] font-poppins font-black py-10"
+                className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-4xl text-transparent sm:text-[5rem] font-poppins font-black py-3 sm:py-10"
               >
                 Layers<span>N</span>
               </h1>
