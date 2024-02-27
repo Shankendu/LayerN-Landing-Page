@@ -5,7 +5,7 @@ export default function Dropdown(props) {
       <div>
         <div
           id={`${props.id}`}
-          className={`${props.className} relative end-0 z-10 mt-2 w-56 rounded-md bg-purple-600/20 backdrop-opacity-40 backdrop-blur-sm shadow-lg shadow-black/30`}
+          className={`${props.className} relative end-0 z-10 mt-2 w-56 rounded-md bg-gray-600/20 backdrop-opacity-40 backdrop-blur-sm shadow-lg shadow-black/30`}
         >
           <div className="p-2">
             <a
