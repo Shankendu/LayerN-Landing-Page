@@ -1,9 +1,9 @@
-import Heromp4 from "../assets/particle_mp4.mp4";
+// import Heromp4 from "../assets/particle_mp4.mp4";
 import Heromp42 from "../assets/Video2.mp4";
-import Herowebm from "../assets/particle_webm.webm";
+// import Herowebm from "../assets/particle_webm.webm";
 import Herowebm2 from "../assets/video2.webm";
 import Logo from "../assets/swap.png";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Preload from "./Preload";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
@@ -35,11 +35,16 @@ export default function Hero() {
     let mainBtn = document.getElementById("drop").classList;
     mainBtn.toggle("invisible");
 
-    const tl2 = gsap.timeline({ paused: true, reversed: true });
+    const tl2 = gsap.timeline({ paused: true, reversed: true, yoyo: true });
     tl2.from("#drop", {
-      translateY: "100",
+      translateY: "150",
       duration: 0.3,
-    });
+      ease:"power4.out"
+    }).to("#drop", {
+      translateY:"0",
+      duration: 0.3,
+      ease:"power4.out"
+    })
     if (tl2.reversed()) {
       tl2.play();
     } else {
@@ -67,12 +72,13 @@ export default function Hero() {
       const tl = gsap.timeline();
       tl.from("#preload", {
         yPercent: "0",
-        duration: 3.2,
+        duration: 2.7,
+        
       })
         .to("#preload", {
           yPercent: "-100",
-          duration: 1,
-          borderRadius: "40%",
+          duration: 1.5,
+          borderRadius: "30%",
           backgroundColor: "rgb(147 51 234)",
           ease: "power4.inOut",
         })
@@ -84,15 +90,13 @@ export default function Hero() {
         });
     }, heroRef);
     return () => ctx.revert();
-  }, []);
-
-  let mm = gsap.matchMedia();
+  }, [])
 
   function mouseMove(e) {
     let magneto = document.getElementById("btn");
     let magnetoText = document.getElementById("btn-text");
     let boundBox = magneto?.getBoundingClientRect();
-    let magnetoTextStrength = 20;
+    let magnetoTextStrength = 15;
 
     const newX = (e?.clientX - boundBox?.left) / magneto?.offsetWidth - 0.5;
     const newY = (e?.clientY - boundBox?.top) / magneto?.offsetHeight - 0.5;
@@ -139,7 +143,7 @@ export default function Hero() {
     <>
       <div className="relative" ref={heroRef}>
         <Preload id="preload" className=" absolute z-20" />
-        <section className="bg-black/80 text-white select-none absolute h-screen w-full z-10">
+        <section id="hero-section" className="bg-black/80 text-white select-none absolute h-screen w-full z-10">
           <video
             className=" h-full w-full object-cover -z-10"
             autoPlay
@@ -183,7 +187,7 @@ export default function Hero() {
                 className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed font-poppins font-medium"
               >
                 DEX Aggregator{" "}
-                <span className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-transparent ">
+                <span className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-transparent font-poppins font-medium ">
                   based on Modular DA providing minimal fees, transaction speed
                   & reduced blob sizes.
                 </span>
@@ -192,7 +196,7 @@ export default function Hero() {
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <button
                   id="btn"
-                  className="flex justify-center shadow-md items-center rounded border border-purple-600 bg-transparent px-12 py-3 text-lg text-white hover:bg-purple-600 focus:outline-none active:text-opacity-75 sm:w-auto hover:transition-all hover:delay-100 font-poppins font-bold hover:duration-200"
+                  className="flex justify-center  items-center rounded border border-purple-600 bg-transparent px-12 py-3 text-lg text-white hover:bg-purple-600 focus:outline-none active:text-opacity-75 sm:w-auto hover:transition-all hover:delay-100 font-poppins font-bold hover:duration-200 hover:shadow-md hover:shadow-purple-900"
                   onClick={(e) => {
                     btnLoader(e);
                   }}
