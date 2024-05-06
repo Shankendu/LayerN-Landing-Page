@@ -173,7 +173,7 @@ export default function Hero() {
                 id="name"
                 className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-500 via-purple-500 to-green-200  bg-clip-text text-4xl text-transparent sm:text-[5rem] font-poppins font-black py-3 sm:py-10"
               >
-                Layers<span>N</span>
+                Layer<span>N</span>
               </h1>
               <span
                 id="text-1"
